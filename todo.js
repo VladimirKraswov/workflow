@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { v4 } = require('uuid');
 const path = './tasks.json';
 
 function loadTasks() {
@@ -12,7 +13,7 @@ function saveTasks(tasks) {
 
 function addTask(text) {
   const tasks = loadTasks();
-  const newTask = { id: Date.now(), text, done: false };
+  const newTask = { id: v4(), text, done: false };
   tasks.push(newTask);
   saveTasks(tasks);
   console.log('Задача добавлена.');
